@@ -1,0 +1,26 @@
+{
+  "name": "dalek-reporter-console",
+  "description": "Console reporter for the Dalekjs testing framework",
+  "version": "0.0.1",
+  "author": "Sebastian Golasch <public@asciidisco.com> (http://asciidisco.com/)",
+  "main": "index.js",
+  "engines" : { "node" : ">=0.8.0" },
+  "keywords": [
+    "dalekjs",
+    "reporter",
+    "console"
+  ],
+  "scripts": {
+    "test": "grunt test"
+  },
+  "dependencies": {
+    "cli-color": "0.2.x",
+    "cli-table": "0.2.x"
+  },
+  "devDependencies": {
+    "grunt": "0.4.0rc4",
+    "grunt-contrib-jshint": "latest",
+    "grunt-contrib-yuidoc": "latest",
+    "grunt-contrib-nodeunit": "latest"
+  }
+}
