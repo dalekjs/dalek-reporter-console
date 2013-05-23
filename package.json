@@ -2,20 +2,30 @@
   "name": "dalek-reporter-console",
   "description": "Console reporter for the Dalekjs testing framework",
   "version": "0.0.1",
-  "author": "Sebastian Golasch <public@asciidisco.com> (http://asciidisco.com/)",
   "main": "index.js",
   "engines" : { "node" : ">=0.8.0" },
+  "repository": {
+      "type": "git",
+      "url": "http://github.com/dalekjs/dalek.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dalekjs/dalek/issues"
+  },
   "keywords": [
     "dalekjs",
     "reporter",
     "console"
   ],
+  "author": {
+    "name": "Sebastian Golasch",
+    "email": "public@asciidisco.com",
+    "url": "http://asciidisco.com"
+  },
   "scripts": {
     "test": "grunt test"
   },
   "dependencies": {
-    "cli-color": "0.2.x",
-    "cli-table": "0.2.x"
+    "cli-color": "0.2.x"
   },
   "devDependencies": {
     "grunt": "0.4.x",
