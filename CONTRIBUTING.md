@@ -1,93 +1,166 @@
-# Contribution Guide
+DalekJS has a few very specific guidelines in addition
+to some of the standard guidelines that Github and open
+source projects in general recommend. These guidelines
+are here to facilitate your contribution and streamline
+the process of getting the changes merged in and released.
 
-*Note: this guide has been heavily inspired by [PhantomJS' one](https://github.com/ariya/phantomjs/blob/master/CONTRIBUTING.md).*
+If you don't follow these guidelines, we'll still work
+with you to get the changes in. Any contribution you can
+make will help tremendously. Following these guidelines
+will help to streamline the pull request and change
+submission process.
 
-**This page describes how to contribute changes to the [dalekjs](http://dalekjs.org/) project.**
+## Documentation Fixes
 
-Please do **not** create a pull request without reading this guide first. Failure to do so may result in the **rejection** of the pull request.
+If you notice any problems with any documentation, please
+fix it and we'll get it merged as soon as we can. For
+small things like typos and grammar (which we know I'm
+terrible with), just click the "Edit this file" button
+and send in the pull request for the fix. For larger
+changes and big swaths of documentation changes, a regular
+pull request as outlined below is more appropriate.
 
-## For The Impatients
+## Pull Requests
 
-**Work on a feature branch**.
-If your changes need to be modified due to some reviews, it is less clutter to tweak an isolated feature branch and push it again.
+See [Github's documentation for pull requests](https://help.github.com/articles/using-pull-requests).
 
-**Create a ticket in the [issue tracker](https://github.com/dalekjs/dalk-driver-casperjs/issues/)**.
-This serves as a placeholder for important feedback, review, or any future updates. **Please ensure searching the bugtracker for an already opened issue matching your case before filing a new issue.**
+Pull requests are by far the best way to contribute to
+DalekJS. Any time you can send us a pull request with
+the changes that you want, we will have an easier time
+seeing what you are trying to do. But a pull request in
+itself is not usually sufficient. There needs to be some
+context and purpose with it, and it should be done
+against specific branch.
 
-In the commit message(s):
+## General Submission Guidelines
 
-* **Keep the first line short**. Write additional paragraphs if necessary.
-* **Reference an opened issue**, by referencing the issue ID prefixed by a `#` and the keyword `refs`, eg. `refs #123`
+These guidelines are generally applicable whether or not
+you are submitting a bug or a pull request. Please try to
+include as much of this information as possible with any
+submission.
 
-Sample commit message:
+### Version Numbers
 
-> refs #123 - fixed error message formatting
->
-> (optional: a short explanation of what the patch actually does)
+In order to best help out with bugs, we need to know the
+following information in your bug submission:
 
-**Run tests**
+* DalekJS version #
+* Operating System / version #
+* Browser and version #
 
-Run the dalek.driver-casperjs' test suite to see you didn't break something:
+Including this information in a submission will help
+us to test the problem and ensure that the bug is
+both reproduced and corrected on the platforms / versions
+that you are having issues with.
 
-    $ grunt test
+### Provide A Meaningful Description
 
-The result status bar **must be green** before sending your PR.
+It doesn't matter how beautiful and "obvious" your fix is.
+We have 10,000,000,000 things floating around the project
+at any given moment and we will not immediately understand
+why you are making changes.
 
-## Communicate
+Given that, it is very important to provide a meaningful
+description with your pull requests that alter any code.
+A good format for these descriptions will include three things:
 
-**Improvement and feature request**. If you have an improvement idea, please send an email to the [mailing list](http://groups.google.com/group/dalekjs) (preferable than contacting the developers directly) so that other people can give their insights and opinions. This is also important to avoid duplicate work.
+1. Why: The problem you are facing (in as much detail as is
+necessary to describe the problem to someone who doesn't
+know anything about the system you're building)
 
-**Help request**. If you're stuck using DalekJS and don't understand how to achieve something, please [ask on the mailing-list](https://groups.google.com/forum/#!forum/dalekjs) first. Please don't ask for all the kind people to write your scripts for you.
+2. What: A summary of the proposed solution
 
-**Ensure the issue is related to dalekjs**. Please try to reproduce the issue using plain CasperJS. If it works with the native CasperJS API but doesn't with dalek-driver-casperjs, then the issue is probably valid. In the opposite case, please file an issue on [CasperJS issue tracker]().
+3. How: A description of how this solution solves the problem,
+in more detail than item #2
 
-**Extending with new API**. Whenever you want to introduce a new API, please send an email to the mailing list along with the link to the issue if any. It may require few iterations to agree on the final API and hence it is important to engage all interested parties as early as possible.
+4. Any additional discussion on possible problems this might
+introduce, questions that you have related to the changes, etc.
 
-## Get Ready
+Without at least the first 2 items in this list, we won't
+have any clue why you're changing the code. The first thing
+we'll ask, then, is that you add that information.
 
-### Use Feature Branch
+### Create A Topic Branch For Your Work
 
-To isolate your change, please avoid working on the master branch. Instead, work on a *feature branch* (often also known as *topic branch*). You can create a new branch (example here crash-fix) off the master branch by using:
+The work you are doing for your pull request should not be
+done in the master branch of your forked repository. Create
+a topic branch for your work. This allows you to isolate
+the work you are doing from other changes that may be happening.
 
-    git checkout -b crash-fix master
+Github is a smart system, too. If you submit a pull request
+from a topic branch and we ask you to fix something, pushing
+a change to your topic branch will automatically update the
+pull request.
 
-Refer to your favorite Git tutorial/book for further detailed help.
+### Isolate Your Changes For The Pull Request
 
-Some good practices for the feature branch:
+See the previous item on creating a topic branch.
 
-* Give it a meaningful name instead of, e.g. `prevent-zero-divide` instead of just `fix`
-* Make *granular* and *atomic* commits, e.g. do not mix a typo fix with some major refactoring
-* Keep one branch for one specific issue. If you need to work on other unrelated issues, create another branch.
+If you don't use a topic branch, we may ask you to re-do your
+pull request on a topic branch. If your pull request contains
+commits or other changes that are not related to the pull
+request, we will ask you to re-do your pull request.
 
-### Write tests
+### Branch from "wip" not "master"
 
-dalek-driver-casperjs being partly a testing framework, how irrelevant would be to send a pull request with no test? So, please take the time to write and attach tests to your PR.
+The "master" branch of the DalekJS repository is for
+production release code, and documentation updates only. Never
+create a pull request from the master branch. Always create
+a branch for your work from the "wip" branch. This will
+facilitate easier pull request management for the continuous
+work that is done in the dev branch.
 
-### Run tests!
+### Submit Specs With Your Pull Request
 
-This may sound obvious but **don't send pull requests which break the casperjs test suite**.
+Whenever possible, submit the specs (unit tests) that
+correspond to your pull request.
 
-To see if your modifications broke the suite, just run:
+I would rather see a pull request that is nothing but a
+failing spec, than see a large change made to the real
+code with no test to support the change.
 
-    $ grunt test
+In fact...
 
-### Write documentation
+## Submit A Failing Spec If You Don't Know How To Fix The Problem
 
-Do you appreciate the [DalekJS documentation](http://dalekjs.org/)? I do too. As the documentation contents are managed and generated using Github & Markdown, take the time to read the [Documentation Contribution Guide]() and write the documentation related to your PR whenever applicable.
+If you are stuck in a scenario that fails in your app,
+but you don't know how to fix it, submit a failing spec
+to show the failing scenario. Follow the guidelines for
+pull request submission, but don't worry about fixing the
+problem. A failing spec to show that a problem exists is
+a very very very helpful pull request for us.
 
-**Note:** As the documentation is handled in a [dedicated separated `gh-pages` branch](), you'll have to send a dedicated PR for doc patches. I'm working on a more comfortable solution, but it's no easy task though.
+We'll even accept a failing test pasted in to the ticket
+description instead of a pull request. That would at
+least get us started on creating the failing test in the code.
 
-## Review and Merge
+## Don't Be A Troll
 
-When your branch is ready, send the pull request.
+It is very sad that we need to include this section of
+the contribution guidelines...
 
-While it is not always the case, often it is necessary to improve parts of your code in the branch. This is the actual review process.
+If you are running in to a scenario with a problem, don't
+be a troll. Comment like "does DalekJS even have tests?"
+are not useful, funny or constructive. In fact, it may get
+you blocked and reported for abuse to Github.
 
-Here is a check list for the review:
+Submit a useful comment describing the scenario that is
+having an issue. Show us a failing test. Show us some
+code that is not behaving the way the documentation says
+it should. Be useful and work with us to fix the problem.
 
-* It does not break the test suite
-* There is no typo
-* The coding style follows the existing one
-* There is a reasonable amount of comment
-* The license header is intact
-* All examples are still working
+We're all for criticism and tearing apart DalekJS for
+the problems it has. Do it in a constructive and helpful
+manner: "There isn't a test for this scenario. Here's a
+rough idea for one that shows the problem." Tell us why
+you don't like Marionette. Tell us that someone else is
+building something better and why that other thing fits
+your scenario and needs better than Marionette does. Just
+do it in a manner that allows us to learn from your
+experiences, instead of reacting to you being a troll
+(likely causing us to get defensive and miss an opportunity
+to learn something).
+
+-----------
+All credit for this goes to @derickbaily, he is not involved in this project anyhow,
+but made this nice piece up for backbone.marionette.
