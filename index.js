@@ -24,7 +24,7 @@
 
 'use strict';
 
-// int globals
+// int. globals
 var reporter = null;
 
 /**
@@ -33,7 +33,8 @@ var reporter = null;
  */
 
 var Reporter = function (opts) {
-  this.level = (parseInt(opts.logLevel, 10) >= 0 && parseInt(opts.logLevel, 10) <= 4) ? parseInt(opts.logLevel, 10) : 1;
+  var loglevel = opts && opts.logLevel ? parseInt(opts.logLevel, 10) : 1;
+  this.level = (loglevel >= 0 && loglevel <= 4) ? loglevel : 1;
   this.events = opts.events;
   this.importLogModule();
   this.startListening();
@@ -56,7 +57,7 @@ module.exports = function (opts) {
  *
  * @method importLogModule
  * @param {object} data
- * @return {Reporter}
+ * @chainable
  */
 
 Reporter.prototype.importLogModule = function () {
@@ -74,17 +75,33 @@ Reporter.prototype.importLogModule = function () {
  *
  * @method startListening
  * @param {object} data
- * @return {Reporter}
+ * @chainable
  */
 
 Reporter.prototype.startListening = function () {
+  // assertion & action status
   this.events.on('report:assertion', this.outputAssertionResult.bind(this));
   this.events.on('report:assertion:status', this.outputAssertionExpecation.bind(this));
+  this.events.on('report:action', this.outputAction.bind(this));
+
+  // test status
   this.events.on('report:test:finished', this.outputTestFinished.bind(this));
   this.events.on('report:test:started', this.outputTestStarted.bind(this));
+
+  // runner status
   this.events.on('report:runner:started', this.outputRunnerStarted.bind(this));
   this.events.on('report:runner:finished', this.outputRunnerFinished.bind(this));
+
+  // session & browser status
   this.events.on('report:run:browser', this.outputRunBrowser.bind(this));
-  this.events.on('report:action', this.outputAction.bind(this));
-  this.events.on('report:log:user', this.outputLogUser.bind(this));
+  this.events.on('report:driver:status', this.outputOSVersion.bind(this));
+  this.events.on('report:driver:session', this.outputBrowserVersion.bind(this));
+
+  // logs
+  this.events.on('report:log:system', this.outputLogUser.bind(this, 'system'));
+  this.events.on('report:log:driver', this.outputLogUser.bind(this, 'driver'));
+  this.events.on('report:log:browser', this.outputLogUser.bind(this, 'browser'));
+  this.events.on('report:log:user', this.outputLogUser.bind(this, 'user'));
+
+  return this;
 };
