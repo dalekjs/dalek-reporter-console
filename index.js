@@ -28,8 +28,12 @@
 var reporter = null;
 
 /**
+ * Console reporter
+ *
  * @class Reporter
  * @constructor
+ * @part console
+ * @api
  */
 
 var Reporter = function (opts) {

@@ -8,6 +8,10 @@ dalek-reporter-console
 [![Dependency Status](https://david-dm.org/dalekjs/dalek-reporter-console.png)](https://david-dm.org/dalekjs/dalek-reporter-console)
 [![devDependency Status](https://david-dm.org/dalekjs/dalek-reporter-console/dev-status.png)](https://david-dm.org/dalekjs/dalek-reporter-console#info=devDependencies)
 [![NPM version](https://badge.fury.io/js/dalek-reporter-console.png)](http://badge.fury.io/js/dalek-reporter-console)
+[![Coverage](http://dalekjs.com/package/dalek-reporter-console/master/coverage/coverage.png)](http://dalekjs.com/package/dalek-reporter-console/master/coverage/index.html)
+[![unstable](https://rawgithub.com/hughsk/stability-badges/master/dist/unstable.svg)](http://github.com/hughsk/stability-badges)
+
+[![NPM](https://nodei.co/npm/dalek-reporter-console.png)](https://nodei.co/npm/dalek-reporter-console/)
 
 ## Ressources
 
@@ -15,7 +19,7 @@ dalek-reporter-console
 [Code coverage](http://dalekjs.com/package/dalek-reporter-console/master/coverage/index.html) -
 [Code complexity](http://dalekjs.com/package/dalek-reporter-console/master/complexity/index.html) -
 [Contributing](https://github.com/dalekjs/dalek-reporter-console/blob/master/CONTRIBUTING.md) -
-[User Docs](http://dalekjs.com/docs/master/reporter/console.html) -
+[User Docs](http://dalekjs.com/docs/console.html) -
 [Homepage](http://dalekjs.com) -
 [Twitter](http://twitter.com/dalekjs)
 
@@ -42,7 +46,7 @@ how to override that feature, browser specific problems and so on.
 
 Questions on StackOverflow often turn in to blog posts or issues.
 
-### [Github Issues](//github.com/dalekjs/dalek-internal-assertions/issues)
+### [Github Issues](//github.com/dalekjs/dalek-reporter-console/issues)
 
 Report issues with DalekJS, submit pull requests to fix problems, or to
 create summarized and documented feature requests (preferably with pull
