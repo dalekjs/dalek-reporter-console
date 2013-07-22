@@ -15,7 +15,8 @@ dalek-reporter-console
 
 ## Ressources
 
-[API Documentation](http://dalekjs.com/package/dalek-reporter-console/master/api/index.html) -
+[API Docs](http://dalekjs.com/package/dalek-reporter-console/master/api/index.html) -
+[Trello](https://trello.com/b/luoOUHVq/dalek-reporter-console) -
 [Code coverage](http://dalekjs.com/package/dalek-reporter-console/master/coverage/index.html) -
 [Code complexity](http://dalekjs.com/package/dalek-reporter-console/master/complexity/index.html) -
 [Contributing](https://github.com/dalekjs/dalek-reporter-console/blob/master/CONTRIBUTING.md) -
