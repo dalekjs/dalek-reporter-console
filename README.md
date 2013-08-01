@@ -12,6 +12,7 @@ dalek-reporter-console
 [![unstable](https://rawgithub.com/hughsk/stability-badges/master/dist/unstable.svg)](http://github.com/hughsk/stability-badges)
 
 [![NPM](https://nodei.co/npm/dalek-reporter-console.png)](https://nodei.co/npm/dalek-reporter-console/)
+[![NPM](https://nodei.co/npm-dl/dalek-reporter-console.png)](https://nodei.co/npm/dalek-reporter-console/)
 
 ## Ressources
 
@@ -23,6 +24,21 @@ dalek-reporter-console
 [User Docs](http://dalekjs.com/docs/console.html) -
 [Homepage](http://dalekjs.com) -
 [Twitter](http://twitter.com/dalekjs)
+
+## Docs
+
+Daleks basic reporter, all the lovely colors & symbols you see when running dalek.
+The reporter will be installed by default.
+
+```bash
+$ dalek your_test.js -r console,junit
+```
+
+or you can add it to your Dalekfile
+
+```js
+"reporter": ["console", "junit"]
+```
 
 ## Help Is Just A Click Away
 
@@ -57,7 +73,7 @@ requests that implement the feature).
 other, better channels for seeking assistance, like StackOverflow and the
 Google Groups mailing list.
 
-![DalekJS](https://raw.github.com/dalekjs/dalekjs.com/master/img/logo.jpg)
+![DalekJS](https://raw.github.com/dalekjs/dalekjs.com/master/img/logo.png)
 
 ## Legal FooBar (MIT License)
 
