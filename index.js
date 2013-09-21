@@ -52,7 +52,7 @@ var reporter = null;
 
 var Reporter = function (opts) {
   var loglevel = opts && opts.logLevel ? parseInt(opts.logLevel, 10) : 1;
-  this.level = (loglevel >= 0 && loglevel <= 4) ? loglevel : 1;
+  this.level = (loglevel >= -1 && loglevel <= 5) ? loglevel : 1;
   this.events = opts.events;
   this.importLogModule();
   this.startListening();
@@ -81,7 +81,11 @@ Reporter.prototype = {
    */
 
   importLogModule: function () {
-    var logModule = require('./lib/loglevel/level' + this.level);
+    var logModule = require('./lib/levelbase');
+    if (this.level !== -1) {
+      logModule = require('./lib/loglevel/level' + this.level);
+    }
+
     var methods = Object.keys(logModule.prototype);
 
     methods.forEach(function (method) {
@@ -122,8 +126,13 @@ Reporter.prototype = {
     this.events.on('report:log:driver', this.outputLogUser.bind(this, 'driver'));
     this.events.on('report:log:browser', this.outputLogUser.bind(this, 'browser'));
     this.events.on('report:log:user', this.outputLogUser.bind(this, 'user'));
+    this.events.on('report:log:system:webdriver', this.outputLogUser.bind(this, 'webdriver'));
 
-    // written reports
+    // errors & warnings
+    this.events.on('error', this.outputError.bind(this));
+    this.events.on('warning', this.outputWarning.bind(this));    
+
+    // reports
     this.events.on('report:written', this.outputReportWritten.bind(this));
 
     return this;
