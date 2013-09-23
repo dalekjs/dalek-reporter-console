@@ -130,7 +130,7 @@ Reporter.prototype = {
 
     // errors & warnings
     this.events.on('error', this.outputError.bind(this));
-    this.events.on('warning', this.outputWarning.bind(this));    
+    this.events.on('warning', this.outputWarning.bind(this));
 
     // reports
     this.events.on('report:written', this.outputReportWritten.bind(this));
