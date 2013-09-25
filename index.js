@@ -54,6 +54,11 @@ var Reporter = function (opts) {
   var loglevel = opts && opts.logLevel ? parseInt(opts.logLevel, 10) : 1;
   this.level = (loglevel >= -1 && loglevel <= 5) ? loglevel : 1;
   this.events = opts.events;
+
+  // set color & symbols flags
+  this.noColor = opts.config.config.noColors;
+  this.noSymbols = opts.config.config.noSymbols;
+
   this.importLogModule();
   this.startListening();
 };
