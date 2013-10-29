@@ -126,6 +126,11 @@ Reporter.prototype = {
     this.events.on('report:driver:status', this.outputOSVersion.bind(this));
     this.events.on('report:driver:session', this.outputBrowserVersion.bind(this));
 
+    // remote connections
+    this.events.on('report:remote:ready', this.remoteConnectionReady.bind(this));
+    this.events.on('report:remote:established', this.remoteConnectionEstablished.bind(this));
+    this.events.on('report:remote:closed', this.remoteConnectionClosed.bind(this));
+
     // logs
     this.events.on('report:log:system', this.outputLogUser.bind(this, 'system'));
     this.events.on('report:log:driver', this.outputLogUser.bind(this, 'driver'));
