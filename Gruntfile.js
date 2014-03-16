@@ -61,10 +61,10 @@ module.exports = function (grunt) {
         options: {
           globals: {
             timestamp: '<%= grunt.template.today("dddd, mmmm dS, yyyy, h:MM:ss TT") %>'
-          },
+          }
         },
         src: 'report/docs/*.html',
-        dest: '.'
+        dest: '../../report/docs/'
       }
     },
 
