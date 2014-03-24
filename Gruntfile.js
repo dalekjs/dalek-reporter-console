@@ -1,4 +1,3 @@
-/* jshint camelcase: false */
 module.exports = function (grunt) {
   'use strict';
 
@@ -8,6 +7,7 @@ module.exports = function (grunt) {
   // load generic configs
   var configs = require('dalek-build-tools');
 
+  // project config
   grunt.initConfig({
 
     // load module meta data
@@ -64,7 +64,7 @@ module.exports = function (grunt) {
           }
         },
         src: 'report/docs/*.html',
-        dest: '../../report/docs/'
+        dest: './'
       }
     },
 
@@ -90,11 +90,25 @@ module.exports = function (grunt) {
           'report/coverage',
           'report/complexity',
           'report/complexity/files',
-          'report/complexity/files/index_js'
+          'report/complexity/files/index_js',
+          'report/complexity/files/lib_levelbase_js',
+          'report/complexity/files/lib_loglevel_level0_js',
+          'report/complexity/files/lib_loglevel_level1_js',
+          'report/complexity/files/lib_loglevel_level2_js',
+          'report/complexity/files/lib_loglevel_level3_js',
+          'report/complexity/files/lib_loglevel_level4_js',
+          'report/complexity/files/lib_loglevel_level5_js'
         ],
         files: [
           'report.history.json',
-          'files/index_js/report.history.json'
+          'files/index_js/report.history.json',
+          'files/lib_levelbase_js/report.history.json',
+          'files/lib_loglevel_level0_js/report.history.json',
+          'files/lib_loglevel_level1_js/report.history.json',
+          'files/lib_loglevel_level2_js/report.history.json',
+          'files/lib_loglevel_level3_js/report.history.json',
+          'files/lib_loglevel_level4_js/report.history.json',
+          'files/lib_loglevel_level5_js/report.history.json'
         ]
       }
     },
@@ -103,7 +117,7 @@ module.exports = function (grunt) {
     prepareCoverage: {
       options: {
         folders: ['coverage', 'report', 'report/coverage'],
-        pattern: '[require("fs").realpathSync(__dirname + "/../index.js")]'
+        pattern: '[require("fs").realpathSync(__dirname + "/../index.js"), require("fs").realpathSync(__dirname + "/../lib/")]'
       }
     },
 
@@ -117,7 +131,7 @@ module.exports = function (grunt) {
     // release canary version
     'release-canary': {
       options: {
-        files: []
+        files: ['index.js']
       }
     }
 
@@ -126,14 +140,13 @@ module.exports = function (grunt) {
   // load 3rd party tasks
   require('load-grunt-tasks')(grunt);
   grunt.loadTasks('./node_modules/dalek-build-tools/tasks');
-  grunt.loadNpmTasks('grunt-documantix');
 
   // define runner tasks
   grunt.registerTask('lint', 'jshint');
   
   // split test & docs for speed
   grunt.registerTask('test', ['clean:coverage', 'prepareCoverage', 'concurrent:test', 'generateCoverageBadge']);
-  grunt.registerTask('docs', ['clean:reportZip', 'clean:report', 'preparePlato', 'concurrent:docs', 'documantix', 'includereplace', 'compress']);
+  grunt.registerTask('docs', ['clean:reportZip', 'clean:report', 'preparePlato', 'documantix', 'includereplace', 'concurrent:docs', 'compress']);
   
   // release tasks
   grunt.registerTask('releasePatch', ['test', 'bump-only:patch', 'contributors', 'changelog', 'bump-commit']);
